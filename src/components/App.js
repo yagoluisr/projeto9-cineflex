@@ -1,5 +1,7 @@
 import "./Css/reset.css";
 import "./Css/style.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Footer from "./Footer";
 import Header from "./Header";
 import Main from "./Main";
@@ -12,20 +14,21 @@ import TittlePage from "./TittlePage";
 export default function App() {
     return (
         <>
-            <Header />
+            
+                <Header />
+                <TittlePage />
+                
+                
+                    <Main />
+                    {/* <Sessions />
 
-            <TittlePage />
+                    <Seats />
 
-            {/* <Main /> */}
+                    <Sucess />
 
-            {/* <Sessions /> */}
-
-            {/* <Seats /> */}
-
-            <Sucess />
-
-            <Footer />
-
+                    <Footer /> */}
+                
+           
         </>
     )
 }

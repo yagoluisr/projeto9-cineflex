@@ -1,9 +1,31 @@
+import axios from "axios";
+import { React } from "react"
+import { useState, useEffect } from "react";
+
 export default function Main() {
+
+    const [movies, setMovies] = useState([]);
+    
+    useEffect(() => {
+        const promise = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies");
+
+        promise.then(res => {
+            console.log(res.data)
+            setMovies(res.data)
+        }); 
+
+    }, [])    
+    
+
     return (
-        <div className="main">
-            <div className="poster">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHtwgXrxjG-jCeLD0pR_J0edcM3FNPRc15ueoYsd6K8wBkeM7rzyJ0l3fDN8HWRegZVGA&usqp=CAU"/>
-            </div>
-        </div>
+        <>
+            {movies.map(item => (
+                <div className="main">
+                    <div className="poster">
+                        <img src={item.posterURL}/>
+                    </div>
+                </div>
+            ))}
+        </>
     )
 }
