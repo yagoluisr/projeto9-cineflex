@@ -1,6 +1,7 @@
 import axios from "axios";
 import { React } from "react"
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function Main() {
 
@@ -18,14 +19,14 @@ export default function Main() {
     
 
     return (
-        <>
-            {movies.map(item => (
-                <div className="main">
-                    <div className="poster">
+        <div className="main">
+            {movies.map((item, key) => (
+                <div className="poster">
+                    <Link to={`/Sessions/${key+1}`}>
                         <img src={item.posterURL}/>
-                    </div>
+                    </Link>
                 </div>
             ))}
-        </>
+        </div>
     )
 }

@@ -14,12 +14,13 @@ import TittlePage from "./TittlePage";
 export default function App() {
     return (
         <>
-            
+            <BrowserRouter>
                 <Header />
                 <TittlePage />
                 
-                
-                    <Main />
+                <Routes>
+                    <Route path="/" element={<Main />}/>
+                    <Route path="/sessions/:movieId" element={<Sessions />}/>
                     {/* <Sessions />
 
                     <Seats />
@@ -27,8 +28,8 @@ export default function App() {
                     <Sucess />
 
                     <Footer /> */}
-                
-           
+                </Routes>
+            </BrowserRouter>    
         </>
     )
 }
