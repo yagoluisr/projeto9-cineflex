@@ -1,12 +1,16 @@
-export default function Footer() {
+export default function Footer({movie, selected}) {
+    // console.log(movie)
+    // console.log(movie.title)
+    //console.log(selected);
+    
     return (
         <div className="footer">
             <div className="frame">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2tfdtEZ297xxZGDt2XKQIuuAjRaGPSlUK-w&usqp=CAU" />
+                <img src={movie.posterURL} />
             </div>
             <div className="tittle">
-                <p>Enola Holmes</p>
-                <p>Quinta-feira - 15:00</p>
+                <p>{movie.title}</p>
+                { selected ? (<p>Quinta-feira - 15:00</p>) : '' }
             </div>
         </div>
     )

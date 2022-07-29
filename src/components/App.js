@@ -21,11 +21,9 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<Main />}/>
                     <Route path="/sessions/:movieId" element={<Sessions />}/>
-                    {/* <Sessions />
-
-                    <Seats />
-
-                    <Sucess />
+                    <Route path="/seats/:seatsId" element={<Seats />}/>
+                    
+                    {/* <Sucess />
 
                     <Footer /> */}
                 </Routes>
