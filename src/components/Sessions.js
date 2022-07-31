@@ -10,7 +10,8 @@ export default function Sessions() {
 
     const [weekday, setWeekday] = useState([]);
     const [movie, setMovie] = useState([]);
-    const [selected, setSelected] = useState(false)
+    //const [selected, setSelected] = useState(false)
+    let selected = false;
     console.log(selected);
 
     useEffect( () => {
@@ -34,9 +35,10 @@ export default function Sessions() {
                     <div className="schedules">
                         
                         {item.showtimes.map((timer, key) => (
+
                             <Link to={`/seats/${timer.id}`}>
                                 <div className="timer" key={key}
-                                onClick = {() => setSelected(true)}>
+                                /*onClick = {() => setSelected(true)}*/>
                                     {timer.name}
                                 </div>
                             </Link>
@@ -46,7 +48,7 @@ export default function Sessions() {
                 </div>
             )) }
 
-            <Footer movie={movie} selected={selected}/>
+            <Footer movie={movie} selected={selected} />
         </>
     )
 }

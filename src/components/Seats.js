@@ -1,14 +1,35 @@
 import axios  from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Input from "./Input";
+import Footer from "./Footer";
 
-function Seat ({item}) {
+
+function Seat ({item, reserve, setReserve}) {
     const [select, setSelect] = useState(false);
+
+    function Verificar (){
+        
+        if(select === true){
+            
+            {reserve.map( item => {
+                console.log(item)
+                (
+            )} )}
+        }
+        
+    }
+
+
     
     return(
     <>
         {item.isAvailable ? 
-            <div className={select ? "selected" : ""} onClick={() => setSelect(!select)} >
+            <div className={select ? "selected" : ""}
+            onClick={() => {
+                setSelect(!select)
+                setReserve([...reserve, item.id])
+                }} >
                 {item.name}
             </div> :
             <div className="unavailable">
@@ -20,40 +41,38 @@ function Seat ({item}) {
 
 
 export default function Seats() {
-    const [seats, setSeats] = useState([]);
-    
+    let selected = true;
 
+    const [seats, setSeats] = useState([]);
+    const [movie, setMovie] = useState([]);
+    const [showTime, setShowTime] = useState ([]);
+    const [reserve, setReserve] = useState([]);
+    console.log(reserve)
 
     const { seatsId } = useParams();
-    console.log(seatsId);
+    //console.log(seatsId);
 
     useEffect( () => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${seatsId}/seats`);
 
         promise.then( res => {
-            //console.log(res.data.seats);
+            console.log(res.data);
+            setShowTime(res.data)
+            setMovie(res.data.movie)
             setSeats(res.data.seats)
         })
     }, [])
 
-
+    //console.log(showTime);
     return (
         <>
             <div className="seats">
                 {seats.map((item, key) => {
                     //console.log(item.isAvailable)
                     return(
-                   
-                        <Seat item={item} key={key}/>
-                  
+                        <Seat item={item} key={key} reserve={reserve} setReserve={setReserve}/>                
                 )} )}
             </div>
-
-            {/* <div className="seats">
-                <div>1</div>
-                <div className="selected">2</div>
-                <div className="unavailable">3</div>
-            </div> */}
 
             <div className="status">
                 <div className="status1">
@@ -71,17 +90,10 @@ export default function Seats() {
 
             </div>
 
-            <div className="input">
-                <p>Nome do comprador: </p>
-                <input type="text" name="nome" placeholder="Digite seu nome..."/><br />
+            <Input reserve={reserve} />
 
-                <br /><br />
-
-                <p>CPF do comprador: </p>
-                <input type="number" name="cpf" placeholder="Digite seu CPF..."/><br />
-            </div>
-
-            <div className="reserve">Reservar assento(s)</div>
+            { movie.length !== 0 && showTime.length !== 0 ? <Footer movie={movie} selected={selected} showTime={showTime}/> : '' }
+            
         </>
     )
 }

@@ -6,6 +6,10 @@ body {
     width: 100%;
 }
 
+a {
+   text-decoration: none; 
+}
+
 .header {
     height: 67px;
     width: 100%;

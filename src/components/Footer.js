@@ -1,5 +1,9 @@
-export default function Footer({movie, selected}) {
-    // console.log(movie)
+export default function Footer({movie, selected, showTime}) {
+    
+    
+    // console.log(showTime.day.weekday);
+    //console.log(showTime.day.date);
+    //console.log(movie)
     // console.log(movie.title)
     //console.log(selected);
     
@@ -10,7 +14,7 @@ export default function Footer({movie, selected}) {
             </div>
             <div className="tittle">
                 <p>{movie.title}</p>
-                { selected ? (<p>Quinta-feira - 15:00</p>) : '' }
+                { selected ? (<p>{showTime.day.weekday} - {showTime.name}</p>) : '' }
             </div>
         </div>
     )
