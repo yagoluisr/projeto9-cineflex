@@ -1,33 +1,35 @@
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 
 export default function Sucess() {
-    const location = useLocation();
-    console.log(location);
+    const { state } = useLocation();
+    const navigate = useNavigate();
 
     return (
         <>
+            <div className="title-sucess">
+                <p>Pedido feito com sucesso!</p>
+            </div>
+
             <div className="info">
                 <span>Filme e sessão</span>
-                <p>{location.state.title}</p>  
-                <p>{location.state.day.date} {location.state.showTime}</p>
-                
+                <p>{ state.title }</p>  
+                <p>{ state.day.date } { state.showTime }</p>
             </div>
 
             <div className="info">
                 <span>Ingressos</span>
-                {location.state.ids.map( (id, key) => (
+                { state.ids.map( (id, key) => (
                     <p key={key}>Assento {id}</p>
-                ))}
-                
+                ))}                
             </div>
 
             <div className="info">
                 <span>Comprador</span>
-                <p>{location.state.name}</p>
-                <p>{location.state.cpf}</p>
+                <p>{ state.name }</p>
+                <p>{ state.cpf }</p>
             </div>
 
-            <div className="home">Voltar pra Home</div>
+            <div className="home" onClick={ () => navigate("/") }>Voltar pra Home</div>
         </>
     )
 }

@@ -26,7 +26,7 @@ a {
     color: #E8833A;
 }
 
-.tittle-page {
+.title-page {
     height: 110px;
     font-weight: 400;
     font-size: 24px;
@@ -38,10 +38,22 @@ a {
     color: #293845;
 }
 
+.title-sucess {
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 0.04em;
+    color: #247A6B;
+}
+
 .main {
-    width: 100%;
     padding: 0 27px;   
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
 }
 
@@ -51,7 +63,8 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 25px;
+
+    margin: 0 auto 12px auto;
     box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
     border-radius: 3px;
 }
@@ -61,9 +74,13 @@ a {
     width: 129px;
 }
 
+.showTimes {
+    margin-bottom: 140px;
+}
+
 .sessions {
     height: 100px;
-    width: 100%;
+    width: 90%;
     padding: 0 27px;
     font-size: 20px;
     font-weight: 400;
@@ -122,7 +139,7 @@ a {
     width: 48px;
 }
 
-.tittle {
+.title {
     padding-left: 15px;
     font-weight: 400;
     font-size: 26px;
@@ -131,7 +148,7 @@ a {
 }
 
 .seats {
-    width: 100%;
+    width: 90%;
     margin: 0 27px; 
     display: flex;
     flex-wrap: wrap;
@@ -242,7 +259,7 @@ a {
     font-size: 18px;
     line-height: 21px;
 }
-
+/* 
 .reserve {
     width: 40%;
     height: 42px;
@@ -257,7 +274,7 @@ a {
     line-height: 21px;
     letter-spacing: 0.04em;
     color: #FFFFFF;
-}
+} */
 
 .sucess {
     font-size: 24px;
@@ -265,6 +282,11 @@ a {
     line-height: 28px;
     letter-spacing: 0.04em;
     color: #247A6B;
+}
+
+.info {
+    padding: 0 27px;
+    margin-bottom: 30px;
 }
 
 .info span {
@@ -280,7 +302,8 @@ a {
     font-weight: 400;
     line-height: 26px;
     letter-spacing: 0.04em;
-    letter-spacing: 0.04em;
+    word-wrap: break-word;
+    margin-top: 3px;
     color: #293845;
 }
 
@@ -298,4 +321,40 @@ a {
     line-height: 21px;
     letter-spacing: 0.04em;
     color: #FFFFFF;
+}
+
+form {
+    margin-bottom: 150px;
+}
+
+input {
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 21px;
+    padding-left: 15px;
+
+    height: 51px;
+    width: 80%;
+    margin-top: 5px;
+    border: 1px solid #D5D5D5;
+    border-radius: 3px;
+}
+
+button[type=submit] {
+    width: 40%;
+    height: 42px;
+    margin: 35px auto 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #E8833A;
+    border-radius: 3px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0.04em;
+    color: #FFFFFF;
+    border: 0;
+    outline: unset;
 }

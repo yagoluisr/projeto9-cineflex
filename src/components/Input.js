@@ -2,17 +2,12 @@ import  axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 
-
-
-
-export default function Input({showTime, movie ,reserve}) {   
+export default function Input({showTime, movie ,reserve, reserveId}) {   
     const navigate = useNavigate();
 
     const [name, setName] = useState("");
     const [cpf, setCpf] = useState("");
-    console.log(showTime)
 
-    
     const info = {
         title: movie.title,
         day: showTime.day,
@@ -22,28 +17,23 @@ export default function Input({showTime, movie ,reserve}) {
         cpf
     }
 
-    console.log(info)
 
     function HandleForm(event) {
         event.preventDefault();
     
         const body = {
-            ids:reserve,
+            ids:reserveId,
             name,
             cpf 
         }
     
-        console.log(body);
+        const promise = axios.post("https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many", body);
 
-        // const promise = axios.post("https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many", body);
-
-        // promise.then(res => {
-        //     console.log(res.data);
-
-        // })
-        navigate('/sucess', { state: info } );
+        promise.then(res => {
+            console.log(res.data);
+        })
+        navigate('/sucesso', { state: info } );
         
-
     }
 
     return (
@@ -58,7 +48,7 @@ export default function Input({showTime, movie ,reserve}) {
                     <input type="number" name="cpf" value={cpf} onChange={e => setCpf(e.target.value)} placeholder="Digite seu CPF..." required /><br />
                 </div>
 
-                <button className="reserve" type="submit">Reservar assento(s)</button>
+                <button type="submit">Reservar assento(s)</button>
 
             </form>
     )

@@ -6,21 +6,15 @@ import Footer from "./Footer";
 
 export default function Sessions() {
     const { movieId } = useParams();
-    //console.log(movieId);
 
     const [weekday, setWeekday] = useState([]);
     const [movie, setMovie] = useState([]);
-    //const [selected, setSelected] = useState(false)
+ 
     let selected = false;
-    console.log(selected);
 
     useEffect( () => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/movies/${movieId}/showtimes`)
         promise.then(res => {
-            // console.log(res)
-             console.log(res.data)
-            // console.log(res.data.days)
-            // console.log(res.data.title)
             setMovie(res.data)
             setWeekday(res.data.days)
         })
@@ -29,24 +23,27 @@ export default function Sessions() {
 
     return (
         <>
-            {weekday.map((item, key) => (
-                <div className="sessions" key={key}>
-                    <p>{item.weekday} - {item.date} </p>
-                    <div className="schedules">
-                        
-                        {item.showtimes.map((timer, key) => (
+            <div className="title-page">
+                <p>Selecione o horário</p>
+            </div>
 
-                            <Link to={`/seats/${timer.id}`}>
-                                <div className="timer" key={key}
-                                /*onClick = {() => setSelected(true)}*/>
-                                    {timer.name}
-                                </div>
-                            </Link>
-                        ))}
+            <div className="showTimes">
+                {weekday.map((item, key) => (
+                    <div className="sessions" key={key}>
+                        <p>{item.weekday} - {item.date} </p>
                         
+                        <div className="schedules">    
+                            {item.showtimes.map((timer, key) => (
+
+                                <Link to={`/assentos/${timer.id}`}>
+                                    <div className="timer" key={key}> {timer.name} </div>
+                                </Link>
+                            ))}      
+                        </div>
+
                     </div>
-                </div>
-            )) }
+                )) }
+            </div>
 
             <Footer movie={movie} selected={selected} />
         </>

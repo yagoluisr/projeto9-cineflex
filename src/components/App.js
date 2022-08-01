@@ -7,7 +7,7 @@ import Main from "./Main";
 import Seats from "./Seats";
 import Sessions from "./Sessions";
 import Sucess from "./Sucess";
-import TittlePage from "./TittlePage";
+
 
 
 export default function App() {
@@ -15,13 +15,11 @@ export default function App() {
         <>
             <BrowserRouter>
                 <Header />
-                <TittlePage />
-                
                 <Routes>
                     <Route path="/" element={<Main />}/>
-                    <Route path="/sessions/:movieId" element={<Sessions />}/>
-                    <Route path="/seats/:seatsId" element={<Seats />}/>
-                    <Route path="/sucess" element={<Sucess />}/>
+                    <Route path="/sessoes/:movieId" element={<Sessions />}/>
+                    <Route path="/assentos/:seatsId" element={<Seats />}/>
+                    <Route path="/sucesso" element={<Sucess />}/>
                 </Routes>
             </BrowserRouter>    
         </>

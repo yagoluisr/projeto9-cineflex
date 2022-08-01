@@ -1,6 +1,4 @@
 export default function Footer({movie, selected, showTime}) {
-    
-    
     // console.log(showTime.day.weekday);
     //console.log(showTime.day.date);
     //console.log(movie)
@@ -12,7 +10,7 @@ export default function Footer({movie, selected, showTime}) {
             <div className="frame">
                 <img src={movie.posterURL} />
             </div>
-            <div className="tittle">
+            <div className="title">
                 <p>{movie.title}</p>
                 { selected ? (<p>{showTime.day.weekday} - {showTime.name}</p>) : '' }
             </div>
