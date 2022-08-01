@@ -21,7 +21,7 @@ export default function Main() {
     return (
         <div className="main">
             {movies.map((item, key) => (
-                <div className="poster">
+                <div className="poster" key={key} >
                     <Link to={`/Sessions/${key+1}`}>
                         <img src={item.posterURL}/>
                     </Link>

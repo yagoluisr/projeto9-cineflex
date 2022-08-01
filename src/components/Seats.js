@@ -8,19 +8,19 @@ import Footer from "./Footer";
 function Seat ({item, reserve, setReserve}) {
     const [select, setSelect] = useState(false);
 
-    function Verificar (){
+    function Check (){
         
         if(select === true){
-            
-            {reserve.map( item => {
-                console.log(item)
-                (
-            )} )}
-        }
-        
+            for(let i = 0; i < reserve.length; i++){
+               if(reserve[i] === item.name){
+                    reserve.splice(i, 1)
+               } 
+            }
+            console.log(reserve);
+        } else {
+            setReserve([...reserve, item.name])
+        }  
     }
-
-
     
     return(
     <>
@@ -28,11 +28,11 @@ function Seat ({item, reserve, setReserve}) {
             <div className={select ? "selected" : ""}
             onClick={() => {
                 setSelect(!select)
-                setReserve([...reserve, item.id])
+                Check() 
                 }} >
                 {item.name}
             </div> :
-            <div className="unavailable">
+            <div className="unavailable" onClick={() => alert("Esse assento não está disponível")} >
                 {item.name}
             </div> }
     </>
@@ -47,7 +47,6 @@ export default function Seats() {
     const [movie, setMovie] = useState([]);
     const [showTime, setShowTime] = useState ([]);
     const [reserve, setReserve] = useState([]);
-    console.log(reserve)
 
     const { seatsId } = useParams();
     //console.log(seatsId);
@@ -90,7 +89,7 @@ export default function Seats() {
 
             </div>
 
-            <Input reserve={reserve} />
+            <Input reserve={reserve} showTime={showTime} movie={movie}/>
 
             { movie.length !== 0 && showTime.length !== 0 ? <Footer movie={movie} selected={selected} showTime={showTime}/> : '' }
             
